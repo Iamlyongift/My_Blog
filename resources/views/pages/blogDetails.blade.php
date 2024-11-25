@@ -41,7 +41,28 @@
             <p><span class="font-semibold">Location:</span> {{ $blog->dojo->location }}</p>
             <p><span class="font-semibold">About:</span> {{ $blog->dojo->description }}</p>
         </div>
+
+        <div class="flex justify-between mt-5">
+            <a href="{{ route('pages.create') }}"
+                class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded shadow-md transition duration-300 ease-in-out">
+                Add New Post
+            </a>
+
+            <!-- Delete Blog Form -->
+            <form action="{{ route('pages.destroy', $blog->id) }}" method="POST" class="mt-4">
+                @csrf
+                @method('DELETE')
+                <button type="submit"
+                    class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded shadow-md transition duration-300 ease-in-out">
+                    Delete Blog
+                </button>
+            </form>
+
+        </div>
     </section>
+
+    <!-- Add New Post Button -->
+
 
     <x-footer />
 </body>
